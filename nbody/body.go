@@ -2,6 +2,7 @@ package nbody
 
 import "math"
 
+// body constants
 const (
 	solarMass   = 4 * math.Pi * math.Pi
 	daysPerYear = 365.24
@@ -77,6 +78,19 @@ func Neptune() *Body {
 	}
 }
 
+// NewBody creates a new Body with it's parameters
+func NewBody(x, y, z, vx, vy, vz, mass float64) *Body {
+	return &Body{
+		X: x,
+		Y: y,
+		Z: z,
+		Vy: vy,
+		Vx: vx,
+		Vz: vz,
+		Mass: mass,
+	}
+}
+ 
 // OffsetMomentum offsets the momentum of the body
 func (b *Body) OffsetMomentum(px, py, pz float64) {
 	b.Vx = -px / solarMass
