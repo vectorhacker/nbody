@@ -9,8 +9,8 @@ type System struct {
 	Bodies []*Body
 }
 
-// NewSystem creates an NBody system
-func NewSystem() *System {
+// Default creates the default NBody system
+func Default() *System {
 	bodies := []*Body{
 		Sun(),
 		Jupiter(),
@@ -19,6 +19,11 @@ func NewSystem() *System {
 		Neptune(),
 	}
 
+	return NewSystem(bodies)
+}
+
+// NewSystem creates a new NBody system
+func NewSystem(bodies []*Body) *System {
 	var px, py, pz float64
 
 	for _, body := range bodies {
